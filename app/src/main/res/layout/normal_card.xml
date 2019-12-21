@@ -35,6 +35,9 @@
             app:layout_constraintTop_toTopOf="@id/cardIcon"
             app:layout_constraintBottom_toTopOf="@id/billNo"
             android:text="Locatiom"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textSize="20dp"
             app:layout_constraintStart_toEndOf="@id/cardIcon"
             app:layout_constraintEnd_toEndOf="parent"
             />
