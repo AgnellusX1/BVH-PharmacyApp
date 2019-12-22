@@ -52,7 +52,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
     }
 
     private void requestPermission(){
-        ActivityCompat.requestPermissions(this,new String[]{CAMERA_SERVICE},REQUEST_CAMERA);
+        ActivityCompat.requestPermissions(this,new String[]{CAMERA},REQUEST_CAMERA);
     }
 
     @Override
@@ -85,6 +85,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
         switch (requestCode){
             case REQUEST_CAMERA:
             if (grantResults.length>0){
+
                 boolean cameraAccepted = grantResults[0]==PackageManager.PERMISSION_GRANTED;
                 if(cameraAccepted){
                     Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
@@ -98,7 +99,8 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                    requestPermissions(new String[]{CAMERA},REQUEST_CAMERA);
+                                    requestPermissions(new String[]{CAMERA},
+                                            REQUEST_CAMERA);
                                 }
                                 }
                             });
@@ -127,6 +129,9 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
     @Override
     public void handleResult(Result rawResult) {
         final String scanResult=rawResult.getText();
+
+
+
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("Scan Result");
         builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
@@ -142,7 +147,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                 startActivity(intent);
             }
         });
-        builder.setMessage(scanResult);
+        builder.setMessage(rawResult.getText());
         AlertDialog alertDialog=builder.create();
         alertDialog.show();
     }
