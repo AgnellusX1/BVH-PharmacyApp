@@ -133,14 +133,14 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
 
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setTitle("Scan Result");
-        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+        builder.setTitle("Add Order to Deliver");
+        builder.setPositiveButton("NO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mScannerView.resumeCameraPreview(AddItems.this);
             }
         });
-        builder.setNeutralButton("Visit", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(scanResult));

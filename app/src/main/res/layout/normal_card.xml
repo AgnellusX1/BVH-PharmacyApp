@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/cardIcon"
-            app:layout_constraintBottom_toTopOf="@id/billNo"
+            app:layout_constraintBottom_toTopOf="@id/pName"
             android:text="Locatiom"
             android:textStyle="bold"
             android:textAllCaps="true"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/billNo"
-            app:layout_constraintTop_toBottomOf="@id/location"
+            app:layout_constraintTop_toBottomOf="@id/pName"
             app:layout_constraintBottom_toBottomOf="@id/cardIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,5 +52,15 @@
             android:text="TBill Number"
             app:layout_constraintEnd_toEndOf="parent"
             />
+
+        <TextView
+            android:id="@+id/pName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient Name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/location"
+            app:layout_constraintStart_toEndOf="@id/cardIcon"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
