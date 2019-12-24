@@ -1,97 +1,139 @@
 package com.agnellusx1.pharmacy;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
+
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import net.sourceforge.jtds.jdbc.*;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
+    // Declaring layout button, edit texts
+    Button login;
+    EditText username,password;
+    ProgressBar progressBar;
+    // End Declaring layout button, edit texts
 
+    // Declaring connection variables
     Connection con;
-    String userId;
-    String pass;
-
-    String dbUser,dbPass,dbMain,ip;
+    String un,pass,db,ip;
+    String usernam,passwordd;
+    //End Declaring connection variables
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Layout Elements Reference
-        Button login = findViewById(R.id.dLogin);
-        final EditText mUserId = findViewById(R.id.userid);
-        final EditText mPass = findViewById(R.id.password);
+        // Getting values from button, texts and progress bar
+        login = (Button) findViewById(R.id.dLogin);
+        username = (EditText) findViewById(R.id.userid);
+        password = (EditText) findViewById(R.id.password);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+        // End Getting values from button, texts and progress bar
 
-        //Database Connection Variables
-         dbUser = "DietApp";
-         dbPass = "BvhApp@123";
-         dbMain = "DietApp";
-         ip = "192.168.5.19:49429;";
+        // Declaring Server ip, username, database name and password
+        ip = "192.168.1.9";
+        db = "msss";
+        un = "DESKTOP-O439JCP/user";
+        pass = "";
+        // Declaring Server ip, username, database name and password
 
 
-        //On Button Click
-        login.setOnClickListener(new View.OnClickListener() {
+        // Setting up the function when button login is clicked
+        login.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                userId = mUserId.getText().toString();
-                pass = mPass.getText().toString();
-//                CheckLogin checkLogin=new CheckLogin();
-//                checkLogin.execute("");
-                Intent dashboard=new Intent(MainActivity.this,Dashboard.class);
-                startActivity(dashboard);
+            public void onClick(View v)
+            {
+                usernam = username.getText().toString();
+                passwordd = password.getText().toString();
+                CheckLogin checkLogin = new CheckLogin();// this is the Asynctask, which is used to process in background to reduce load on app process
+                checkLogin.execute("");
             }
         });
+        //End Setting up the function when button login is clicked
     }
 
-
-    public class CheckLogin extends AsyncTask<String, String, String> {
+    public class CheckLogin extends AsyncTask<String,String,String>
+    {
+        String z = "";
+        Boolean isSuccess = false;
 
         @Override
-        protected String doInBackground(String... params) {
+        protected void onPreExecute()
 
-            String z = "";
-            Boolean isSuccess = false;
+        {
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
-            if (userId.trim().equals("") || pass.trim().equals(""))
+        @Override
+        protected void onPostExecute(String r)
+        {
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(MainActivity.this, r, Toast.LENGTH_SHORT).show();
+            if(isSuccess)
+            {
+                Intent intent = new Intent(MainActivity.this,Dashboard.class);
+                startActivity(intent);
+                //Toast.makeText(MainActivity.this , "Login Successfull" , Toast.LENGTH_LONG).show();
+                //finish();
+            }
+        }
+        @Override
+        protected String doInBackground(String... params)
+        {
+
+            if(usernam.trim().equals("")|| passwordd.trim().equals(""))
                 z = "Please enter Username and Password";
-            else {
-                try {
-                    con = connectionclass(userId,pass,dbMain,ip);        // Connect to database
-                    if (con == null) {
+            else
+            {
+                try
+                {
+                    con = connectionclass(un, pass, db, ip);        // Connect to database
+                    if (con == null)
+                    {
                         z = "Check Your Internet Access!";
-                    } else {
-                        String query = "select * from login where username= '" + userId + "' and password = '" + pass + "' ";
+                    }
+                    else
+                    {
+                        String query = "select * from Vw_PharmacyDeliveries where PatientCode = '" + usernam.toString() + "' and PatientName = '"+ passwordd.toString() +"' ";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
-                        if (rs.next()) {
+                        if(rs.next())
+                        {
                             z = "Login successful";
-                            isSuccess = true;
+                            isSuccess=true;
                             con.close();
-                        } else {
+                        }
+                        else
+                        {
                             z = "Invalid Credentials!";
                             isSuccess = false;
                         }
                     }
-                } catch (Exception ex) {
+                }
+                catch (Exception ex)
+                {
                     isSuccess = false;
                     z = ex.getMessage();
                 }
@@ -99,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
             return z;
         }
     }
+
 
     @SuppressLint("NewApi")
     public Connection connectionclass(String user, String password, String database, String server)
@@ -110,7 +153,9 @@ public class MainActivity extends AppCompatActivity {
         try
         {
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            //ConnectionURL = "jdbc:jtds:sqlserver://sql5009.mywindowshosting.com;database=DB_A2C00B_login;user=DB_A2C00B_login_admin;password=login@123";
+            ConnectionURL = "jdbc:jtds:sqlserver://192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
+//            ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
+
 
             connection = DriverManager.getConnection(ConnectionURL);
         }
