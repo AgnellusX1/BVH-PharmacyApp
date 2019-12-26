@@ -3,6 +3,7 @@ package com.agnellusx1.pharmacy;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     String un,pass,db,ip;
     String usernam,passwordd;
     //End Declaring connection variables
+    private DBconnect DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -69,9 +71,26 @@ public class MainActivity extends AppCompatActivity
                 passwordd = password.getText().toString();
                 CheckLogin checkLogin = new CheckLogin();// this is the Asynctask, which is used to process in background to reduce load on app process
                 checkLogin.execute("");
+
+                SharedPreferences Cache = getSharedPreferences("memory",MODE_PRIVATE);
+                SharedPreferences.Editor editor = Cache.edit();
+
+                editor.putString("uname",usernam);
+                editor.putString("pass",passwordd);
+                editor.apply();
             }
         });
         //End Setting up the function when button login is clicked
+
+
+        //now to get values of SharedPreferences
+        SharedPreferences getShared = getSharedPreferences("memory",MODE_PRIVATE);
+        String saved1 = getShared.getString("uname","");
+        String saved2 = getShared.getString("pass","");
+
+        username.setText(saved1);
+        password.setText(saved2);
+
     }
 
     public class CheckLogin extends AsyncTask<String,String,String>
@@ -95,6 +114,7 @@ public class MainActivity extends AppCompatActivity
             {
                 Intent intent = new Intent(MainActivity.this,Dashboard.class);
                 startActivity(intent);
+                finish();
                 //Toast.makeText(MainActivity.this , "Login Successfull" , Toast.LENGTH_LONG).show();
                 //finish();
             }
@@ -109,7 +129,8 @@ public class MainActivity extends AppCompatActivity
             {
                 try
                 {
-                    con = connectionclass(un, pass, db, ip);        // Connect to database
+                    DB = new DBconnect();
+                    Connection con = DB.connectionclass();        // Connect to database
                     if (con == null)
                     {
                         z = "Check Your Internet Access!";
@@ -143,34 +164,34 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    @SuppressLint("NewApi")
-    public Connection connectionclass(String user, String password, String database, String server)
-    {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-        String ConnectionURL = null;
-        try
-        {
-            Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            ConnectionURL = "jdbc:jtds:sqlserver://192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
-//            ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
-
-
-            connection = DriverManager.getConnection(ConnectionURL);
-        }
-        catch (SQLException se)
-        {
-            Log.e("error here 1 : ", se.getMessage());
-        }
-        catch (ClassNotFoundException e)
-        {
-            Log.e("error here 2 : ", e.getMessage());
-        }
-        catch (Exception e)
-        {
-            Log.e("error here 3 : ", e.getMessage());
-        }
-        return connection;
-    }
+//    @SuppressLint("NewApi")
+//    public Connection connectionclass(String user, String password, String database, String server)
+//    {
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//        Connection connection = null;
+//        String ConnectionURL = null;
+//        try
+//        {
+//            Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
+//            ConnectionURL = "jdbc:jtds:sqlserver://192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
+////            ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
+//
+//
+//            connection = DriverManager.getConnection(ConnectionURL);
+//        }
+//        catch (SQLException se)
+//        {
+//            Log.e("error here 1 : ", se.getMessage());
+//        }
+//        catch (ClassNotFoundException e)
+//        {
+//            Log.e("error here 2 : ", e.getMessage());
+//        }
+//        catch (Exception e)
+//        {
+//            Log.e("error here 3 : ", e.getMessage());
+//        }
+//        return connection;
+//    }
 }
