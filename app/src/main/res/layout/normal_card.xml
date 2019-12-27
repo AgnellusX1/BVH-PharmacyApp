@@ -8,15 +8,14 @@
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
     android:layout_marginBottom="4dp"
-    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardBackgroundColor="@color/cardview_light_background"
     app:cardCornerRadius="20dp"
-    app:cardElevation="18dp">
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/naturalCard"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <ImageView
@@ -32,35 +31,38 @@
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/cardIcon"
-            app:layout_constraintBottom_toTopOf="@id/pName"
+            android:layout_marginTop="16dp"
             android:text="Locatiom"
-            android:textStyle="bold"
             android:textAllCaps="true"
             android:textSize="20dp"
-            app:layout_constraintStart_toEndOf="@id/cardIcon"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/pName"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toEndOf="@id/cardIcon"
+            app:layout_constraintTop_toTopOf="@id/cardIcon"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/billNo"
-            app:layout_constraintTop_toBottomOf="@id/pName"
-            app:layout_constraintBottom_toBottomOf="@id/cardIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/cardIcon"
+            android:layout_marginBottom="16dp"
             android:text="TBill Number"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintHorizontal_bias="0.471"
+            app:layout_constraintStart_toEndOf="@id/cardIcon" />
 
         <TextView
             android:id="@+id/pName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Patient Name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/location"
-            app:layout_constraintStart_toEndOf="@id/cardIcon"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@+id/billNo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintStart_toEndOf="@id/cardIcon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
