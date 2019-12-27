@@ -6,7 +6,7 @@
     tools:context=".Tabs.FastTrackTab">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/normalList"
+        android:id="@+id/fastlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>

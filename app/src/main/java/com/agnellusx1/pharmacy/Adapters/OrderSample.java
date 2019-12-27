@@ -1,27 +1,25 @@
 package com.agnellusx1.pharmacy.Adapters;
 
 public class OrderSample {
-    public String location;
-    public String name;
-    public String billNumber;
+    public String NAME;
+    public String LOCATION;
+    public String MIN;
 
     public String getLocation() {
-        return location;
+        return LOCATION;
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
     public String getBillNumber() {
-        return billNumber;
+        return MIN;
     }
 
-    public OrderSample(String location, String name, String billNumber) {
-        this.location = location;
-        this.name = name;
-        this.billNumber = billNumber;
-
-
+    public OrderSample(String LOCATION, String NAME, String MIN) {
+        this.LOCATION = LOCATION;
+        this.NAME = NAME;
+        this.MIN = MIN;
     }
 }

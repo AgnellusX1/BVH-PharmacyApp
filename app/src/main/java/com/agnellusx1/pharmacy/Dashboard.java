@@ -12,33 +12,11 @@ import android.widget.TextView;
 
 public class Dashboard extends AppCompatActivity {
 
-    Button Add;
-//    private AddItems.Example;
-//    String x = Example.ans;
-//    String BillNum;
-//    TextView Bitems;
-//    public String flag;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-//        Log.d("Tag6",String.valueOf(flag));
-
-
-//        Bitems = (TextView)findViewById(R.id.textView);
-//        Log.d("Tag4","onCreate invoked");
-//        if (flag != ""){
-//            Log.d("Tag5","IF invoked");
-//            //Intent getAns = getIntent();
-//            //Bitems.setText((CharSequence) getAns);
-//
-//            Log.d("Tag3", String.valueOf(Example.ans));
-//            Bitems.setText(Example.ans);
-//            flag = "";
-//
-//        }
 
 
 
@@ -46,7 +24,6 @@ public class Dashboard extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                flag = "Dallu";
                 Intent addItems=new Intent(Dashboard.this,AddItems.class);
                 startActivity(addItems);
             }
