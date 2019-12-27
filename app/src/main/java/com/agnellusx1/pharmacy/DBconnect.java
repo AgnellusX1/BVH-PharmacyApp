@@ -45,36 +45,31 @@ public class DBconnect {
         return connection;
     }
 
-    public static String pickQuerry (String inputQ) throws Exception {
+    public boolean insTable (String MIN1,String PC,String PN,String loc )  {
 
-        String z;
-        String ans = null;
-        DBconnect DB = new DBconnect();
-        Connection con = DB.connectionclass();
-        if (con == null)
-        {
-            z = "Check Your Internet Access!";
-        }
-        else
-        {
-            String query = "select * from Vw_PharmacyDeliveries where PatientCode = '" + inputQ;
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            if(rs.next())
-            {
-                ans = rs.getString("PatientName ");
-                con.close();
-            }
+
+        try {
+            Connection conn = connectionclass();
+            String query="";
+            Statement stmt;
+            // int flag =1;
+            stmt = conn.createStatement();
+            // if(DietRqstNumber!=null) {
+            query = "INSERT INTO Order_List (MIN,scanDate,PatientCode,PatientName,Status,Location) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"')";
+            int success;
+            success = stmt.executeUpdate(query);
+            if(success > 0)
+                return true;
             else
-            {
-                z = "Invalid Credentials!";
-                con.close();
-            }
+                return false;
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }catch (NullPointerException e){
+            Log.e("error",e.toString());
         }
-        return ans;
+
+        return true;
     }
-
-
 
 }

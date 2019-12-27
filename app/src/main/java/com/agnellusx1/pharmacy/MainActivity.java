@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity
 
         //now to get values of SharedPreferences
         SharedPreferences getShared = getSharedPreferences("memory",MODE_PRIVATE);
-        String saved1 = getShared.getString("uname","");
-        String saved2 = getShared.getString("pass","");
+        String saved1 = getShared.getString("uname","BH14011150");
+        String saved2 = getShared.getString("pass","Mr. Joseph Dcruz");
 
         username.setText(saved1);
         password.setText(saved2);
@@ -163,35 +163,4 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
-//    @SuppressLint("NewApi")
-//    public Connection connectionclass(String user, String password, String database, String server)
-//    {
-//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//        StrictMode.setThreadPolicy(policy);
-//        Connection connection = null;
-//        String ConnectionURL = null;
-//        try
-//        {
-//            Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-//            ConnectionURL = "jdbc:jtds:sqlserver://192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
-////            ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
-//
-//
-//            connection = DriverManager.getConnection(ConnectionURL);
-//        }
-//        catch (SQLException se)
-//        {
-//            Log.e("error here 1 : ", se.getMessage());
-//        }
-//        catch (ClassNotFoundException e)
-//        {
-//            Log.e("error here 2 : ", e.getMessage());
-//        }
-//        catch (Exception e)
-//        {
-//            Log.e("error here 3 : ", e.getMessage());
-//        }
-//        return connection;
-//    }
 }

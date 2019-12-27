@@ -32,7 +32,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
     private static final int REQUEST_CAMERA=1;
     private ZXingScannerView mScannerView;
 
-    public String theAns;
+    public String theAns,two,three,four,five,six;
     String BillNo;
 
 
@@ -208,6 +208,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
         }
 
         private  DBconnect DB;
+
         @Override
         protected String doInBackground(String... params)
         {
@@ -229,10 +230,15 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                     {
                         z = "Login successful";
                         isSuccess=true;
-                        theAns = rs.getString("PatientName");
-                        //Log.d("Tag2", String.valueOf(Example.ans));
-                        con.close();
+//                        theAns = rs.getString("PatientName");
+//                        two = rs.getString("MatlIndentNumber");
+//                        three = rs.getString("PatientCode");
+                        DB.insTable(rs.getString("MatlIssueNumber"),
+                                rs.getString("PatientCode"),
+                                rs.getString("PatientName"),
+                                rs.getString("WardName"));
                     }
+
                     else
                     {
                         z = "Invalid Credentials!";
