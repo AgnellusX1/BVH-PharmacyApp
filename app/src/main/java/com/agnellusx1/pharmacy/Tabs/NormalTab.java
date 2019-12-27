@@ -63,7 +63,8 @@ public class NormalTab extends Fragment {
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }
         else {
-            String query="Select MIN,LOCATION,NAME FROM RecyclerTable";
+            String query="Select PatientCode,Status,PatientName FROM Order_List where Status = '1'";
+
             try {
                 Statement stmt=connection.createStatement();
                 ResultSet resultSet=stmt.executeQuery(query);
@@ -72,9 +73,9 @@ public class NormalTab extends Fragment {
                         {
                             try{
                                 OrderSample orderSample=new OrderSample(
-                                        resultSet.getString("NAME"),
-                                        resultSet.getString("LOCATION"),
-                                        resultSet.getString("MIN")
+                                        resultSet.getString("PatientCode"),
+                                        resultSet.getString("Status"),
+                                        resultSet.getString("PatientName")
                                 );
 
                                 itemList.add(orderSample);
@@ -97,6 +98,7 @@ public class NormalTab extends Fragment {
 
 //        mNormalAdapter=new NormalAdapter(getContext(),itemList);
 //        mRecyclerView.setAdapter(mNormalAdapter);
+
         return view;
     }
 
