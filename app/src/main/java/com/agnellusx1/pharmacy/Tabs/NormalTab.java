@@ -2,13 +2,16 @@ package com.agnellusx1.pharmacy.Tabs;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import com.agnellusx1.pharmacy.Adapters.OrderSample;
 import com.agnellusx1.pharmacy.AddItems;
 import com.agnellusx1.pharmacy.DBconnect;
 import com.agnellusx1.pharmacy.Dashboard;
+import com.agnellusx1.pharmacy.DashboardList;
 import com.agnellusx1.pharmacy.R;
 
 import java.sql.Connection;
@@ -38,6 +42,7 @@ public class NormalTab extends Fragment {
     ArrayList<OrderSample>itemList;
     private RecyclerView mRecyclerView;
     NormalAdapter mNormalAdapter;
+    SwipeRefreshLayout mRefreshLayout;
 
 
     public NormalTab() {
@@ -56,17 +61,20 @@ public class NormalTab extends Fragment {
         DBconnect dBconnect=new DBconnect();
         Connection connection=dBconnect.connectionclass();
 
+
         mRecyclerView=view.findViewById(R.id.normalList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         itemList=new ArrayList<OrderSample>();
         itemList.clear();
+
+
+
         Toast.makeText(getContext(), "Checking for Orders", Toast.LENGTH_SHORT).show();
         if(connection==null){
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }
         else {
             String query="Select PatientCode,Status,PatientName FROM Order_List where Status = '1'";
-
             try {
                 Statement stmt=connection.createStatement();
                 ResultSet resultSet=stmt.executeQuery(query);
@@ -83,6 +91,7 @@ public class NormalTab extends Fragment {
                                 itemList.add(orderSample);
                                 mNormalAdapter=new NormalAdapter(getContext(),itemList);
                                 mRecyclerView.setAdapter(mNormalAdapter);
+
                             }catch(Exception ex){
                                 ex.printStackTrace();
                             }
@@ -98,11 +107,39 @@ public class NormalTab extends Fragment {
             }
         }
 
+//        mRefreshLayout=view.findViewById(R.id.swipeRefresh);
+//        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                Intent intent=new Intent(getContext(), Dashboard.class);
+//                startActivity(intent);
+////                mNormalAdapter=new NormalAdapter(getContext(),itemList);
+////                mRecyclerView.setAdapter(mNormalAdapter);
+//                mRefreshLayout.setRefreshing(false);
+//            }
+//        });
+
 //        mNormalAdapter=new NormalAdapter(getContext(),itemList);
 //        mRecyclerView.setAdapter(mNormalAdapter);
-
         return view;
+
     }
+
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        // Refresh tab data:
+//        if (getFragmentManager() != null) {
+//
+//            getFragmentManager()
+//                    .beginTransaction()
+//                    .detach(this)
+//                    .attach(this)
+//                    .commit();
+//        }
+//    }
+
+
 
  }
 

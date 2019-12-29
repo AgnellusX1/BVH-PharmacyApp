@@ -1,5 +1,4 @@
 package com.agnellusx1.pharmacy;
-//import com.agnellusx1.pharmacy.AddItems.Example;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;

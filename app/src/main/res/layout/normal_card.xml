@@ -10,20 +10,22 @@
     android:layout_marginBottom="4dp"
     app:cardBackgroundColor="@color/cardview_light_background"
     app:cardCornerRadius="20dp"
-    app:cardElevation="0dp">
+    app:cardElevation="10dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/naturalCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="3dp">
+        android:paddingTop="3dp"
+        >
 
 
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Locatiom"
+            android:text="Location"
             android:textAllCaps="true"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -35,8 +37,8 @@
 
         <TextView
             android:id="@+id/billNo"
-            android:layout_width="191dp"
-            android:layout_height="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="TBill Number"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,12 +58,17 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="72dp"
-            android:layout_height="77dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:maxHeight="80dp"
+            android:maxWidth="80dp"
+            app:layout_constraintEnd_toStartOf="@id/location"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/patientv24" />
+            android:src="@drawable/patientv24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
