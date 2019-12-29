@@ -1,5 +1,6 @@
 package com.agnellusx1.pharmacy.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,18 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.agnellusx1.pharmacy.AddItems;
 import com.agnellusx1.pharmacy.DBconnect;
 import com.agnellusx1.pharmacy.Dashboard;
 import com.agnellusx1.pharmacy.R;
+import com.agnellusx1.pharmacy.Tabs.NormalTab;
 
 import org.w3c.dom.Text;
 
@@ -97,9 +101,8 @@ public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.NormalView
                         public void onClick(DialogInterface dialogInterface, int i) {
                             nurse_id = nurseID.getText().toString();
                             nurse_pass = nursePASS.getText().toString();
-
                     if(nurse_pass.trim().equals("")&&nurse_pass.trim().equals(""))
-                        Toast.makeText(Context ,"Enter Nurse Password" , Toast.LENGTH_LONG).show();
+                        Toast.makeText(Context ,"Please Enter Details" , Toast.LENGTH_LONG).show();
 
                     else
                     {
@@ -123,6 +126,13 @@ public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.NormalView
                                     Statement stmt1 = con.createStatement();
                                     stmt1.executeUpdate(query1);
                                     con.close();
+                                    Intent intent = new Intent(Context, Dashboard.class);
+                                    Context.startActivity(intent);
+                                    ((Activity) Context).finish();
+
+
+
+
                                 }
                                 else
                                 {
