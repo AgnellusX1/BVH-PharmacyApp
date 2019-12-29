@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.agnellusx1.pharmacy.Tabs.NormalTab;
 import com.google.zxing.Result;
 
 import java.sql.Connection;
@@ -34,8 +35,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
     public String theAns,two,three,four,five,six;
     String BillNo;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +151,10 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                 BillNo = rawResult.getText();
                 CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
                 checkDB.execute("");
-                Intent intent = new Intent(AddItems.this,Dashboard.class);
+
+
+
+                Intent intent = new Intent(AddItems.this, Dashboard.class);
                 //intent.putExtra(MSG,theAns);
                 startActivity(intent);
                 finish();
@@ -200,8 +202,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
                 Toast.makeText(AddItems.this ,"data retrieved" , Toast.LENGTH_LONG).show();
                 Log.d("tag1", String.valueOf(theAns));
-                //String boi = gg.ans;
-                //Log.d("bubblebutt", String.valueOf());
 
 
             }
@@ -253,6 +253,14 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
             }
             return z;
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(AddItems.this,Dashboard.class);
+        startActivity(intent);
     }
 
 }

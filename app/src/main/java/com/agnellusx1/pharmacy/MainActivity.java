@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity
                         {
                             z = "Invalid Credentials!";
                             isSuccess = false;
+                            con.close();
                         }
                     }
                 }

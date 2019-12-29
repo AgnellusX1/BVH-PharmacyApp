@@ -22,13 +22,12 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toTopOf="@id/viewpager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabMode="fixed"
-        android:elevation="10dp">
+        app:tabMode="fixed">
 
     </com.google.android.material.tabs.TabLayout>
 

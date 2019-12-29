@@ -8,7 +8,7 @@
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
     android:layout_marginBottom="4dp"
-    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardBackgroundColor="@color/cardview_light_background"
     app:cardCornerRadius="20dp"
     app:cardElevation="18dp">
 
@@ -20,10 +20,9 @@
             android:id="@+id/addItemIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -31,20 +30,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Location"
-            app:layout_constraintStart_toEndOf="@id/addItemIcon"
             app:layout_constraintBottom_toTopOf="@id/addCardBillNo"
             app:layout_constraintEnd_toStartOf="@id/checkBox"
-            app:layout_constraintTop_toTopOf="@id/addItemIcon"/>
+            app:layout_constraintHorizontal_bias="0.55"
+            app:layout_constraintStart_toEndOf="@id/addItemIcon"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/addCardBillNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bill Number"
-            app:layout_constraintTop_toBottomOf="@id/addCardLocation"
-            app:layout_constraintStart_toEndOf="@id/addItemIcon"
             app:layout_constraintBottom_toBottomOf="@id/addItemIcon"
-            app:layout_constraintEnd_toStartOf="@id/checkBox"/>
+            app:layout_constraintEnd_toStartOf="@id/checkBox"
+            app:layout_constraintHorizontal_bias="0.546"
+            app:layout_constraintStart_toEndOf="@id/addItemIcon"
+            app:layout_constraintTop_toBottomOf="@id/addCardLocation" />
 
         <CheckBox
             android:id="@+id/checkBox"
