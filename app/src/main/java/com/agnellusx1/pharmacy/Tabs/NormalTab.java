@@ -64,6 +64,7 @@ public class NormalTab extends Fragment {
 
         mRecyclerView=view.findViewById(R.id.normalList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         itemList=new ArrayList<OrderSample>();
         itemList.clear();
 
