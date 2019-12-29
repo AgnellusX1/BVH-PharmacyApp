@@ -185,7 +185,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
         @Override
         protected void onPreExecute()
-
         {
 
         }

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/normalCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="4dp"
@@ -17,7 +18,7 @@
         android:id="@+id/naturalCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="3dp"
+        android:orientation="horizontal"
         >
 
 
@@ -29,7 +30,6 @@
             android:textAllCaps="true"
             android:textSize="20dp"
             android:textStyle="bold"
-
             app:layout_constraintBottom_toTopOf="@+id/pName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView2"

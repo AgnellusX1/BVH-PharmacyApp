@@ -18,11 +18,12 @@
     <fragment
         android:id="@+id/fragment"
         android:name="com.agnellusx1.pharmacy.DashboardList"
-        android:layout_width="422dp"
-        android:layout_height="690dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        android:layout_height="0dp"
+        android:layout_width="0dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddBtn"
