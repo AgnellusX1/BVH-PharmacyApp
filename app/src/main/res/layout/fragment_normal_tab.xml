@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tabs.NormalTab">
+    tools:context=".Tabs.PatientTab">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/normalList"
             android:layout_width="match_parent"

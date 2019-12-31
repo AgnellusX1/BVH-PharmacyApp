@@ -14,10 +14,10 @@ import com.agnellusx1.pharmacy.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FastTrackTab extends Fragment {
+public class DeliveredTab extends Fragment {
 
 
-    public FastTrackTab() {
+    public DeliveredTab() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,7 @@ public class FastTrackTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fast_track_tab, container, false);
+        return inflater.inflate(R.layout.fragment_dilevered_tab, container, false);
     }
 
 }

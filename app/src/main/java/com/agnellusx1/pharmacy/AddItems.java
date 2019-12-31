@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.agnellusx1.pharmacy.Tabs.NormalTab;
 import com.google.zxing.Result;
 
 import java.sql.Connection;

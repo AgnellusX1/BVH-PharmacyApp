@@ -4,28 +4,20 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.agnellusx1.pharmacy.AddItems;
 import com.agnellusx1.pharmacy.DBconnect;
 import com.agnellusx1.pharmacy.Dashboard;
 import com.agnellusx1.pharmacy.R;
-import com.agnellusx1.pharmacy.Tabs.NormalTab;
-
-import org.w3c.dom.Text;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,7 +25,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.NormalViewHolder> {
+public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.NormalViewHolder> {
 
     private DBconnect DB;
     DialogInterface.OnClickListener listener;
@@ -41,7 +33,7 @@ public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.NormalView
     private Context Context;
     private String nurse_pass,nurse_id;
 
-    public NormalAdapter(Context mContext, ArrayList<OrderSample>mSamples) {
+    public PatientAdapter(Context mContext, ArrayList<OrderSample>mSamples) {
         Samples = mSamples;
         Context = mContext;
     }
@@ -50,15 +42,15 @@ public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.NormalView
 
     @NonNull
     @Override
-    public NormalAdapter.NormalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PatientAdapter.NormalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //LayoutInflater inflater=LayoutInflater.from(parent.getContext());
-        //View v = inflater.inflate(R.layout.normal_card,parent,false);
-        return new NormalViewHolder(LayoutInflater.from(Context).inflate(R.layout.normal_card,parent,false)) ;
+        //View v = inflater.inflate(R.layout.patient_card,parent,false);
+        return new NormalViewHolder(LayoutInflater.from(Context).inflate(R.layout.patient_card,parent,false)) ;
         //ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NormalAdapter.NormalViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PatientAdapter.NormalViewHolder holder, int position) {
         final OrderSample orderSample = Samples.get(position);
         holder.Location.setText(orderSample.getLocation());
         holder.Name.setText(orderSample.getName());

@@ -1,31 +1,21 @@
 package com.agnellusx1.pharmacy.Tabs;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.agnellusx1.pharmacy.Adapters.NormalAdapter;
+import com.agnellusx1.pharmacy.Adapters.PatientAdapter;
 import com.agnellusx1.pharmacy.Adapters.OrderSample;
-import com.agnellusx1.pharmacy.AddItems;
 import com.agnellusx1.pharmacy.DBconnect;
-import com.agnellusx1.pharmacy.Dashboard;
-import com.agnellusx1.pharmacy.DashboardList;
 import com.agnellusx1.pharmacy.R;
 
 import java.sql.Connection;
@@ -33,19 +23,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NormalTab extends Fragment {
+public class PatientTab extends Fragment {
     ArrayList<OrderSample>itemList;
     private RecyclerView mRecyclerView;
-    NormalAdapter mNormalAdapter;
+    PatientAdapter mPatientAdapter;
     SwipeRefreshLayout mRefreshLayout;
 
 
-    public NormalTab() {
+    public PatientTab() {
         // Required empty public constructor
     }
 
@@ -90,8 +79,8 @@ public class NormalTab extends Fragment {
                                 );
 
                                 itemList.add(orderSample);
-                                mNormalAdapter=new NormalAdapter(getContext(),itemList);
-                                mRecyclerView.setAdapter(mNormalAdapter);
+                                mPatientAdapter =new PatientAdapter(getContext(),itemList);
+                                mRecyclerView.setAdapter(mPatientAdapter);
 
                             }catch(Exception ex){
                                 ex.printStackTrace();
@@ -114,14 +103,14 @@ public class NormalTab extends Fragment {
 //            public void onRefresh() {
 //                Intent intent=new Intent(getContext(), Dashboard.class);
 //                startActivity(intent);
-////                mNormalAdapter=new NormalAdapter(getContext(),itemList);
-////                mRecyclerView.setAdapter(mNormalAdapter);
+////                mPatientAdapter=new PatientAdapter(getContext(),itemList);
+////                mRecyclerView.setAdapter(mPatientAdapter);
 //                mRefreshLayout.setRefreshing(false);
 //            }
 //        });
 
-//        mNormalAdapter=new NormalAdapter(getContext(),itemList);
-//        mRecyclerView.setAdapter(mNormalAdapter);
+//        mPatientAdapter=new PatientAdapter(getContext(),itemList);
+//        mRecyclerView.setAdapter(mPatientAdapter);
         return view;
 
     }

@@ -1,34 +1,20 @@
 package com.agnellusx1.pharmacy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.SearchView;
-import android.widget.TableLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.agnellusx1.pharmacy.Adapters.NormalAdapter;
-import com.agnellusx1.pharmacy.Adapters.OrderSample;
-import com.agnellusx1.pharmacy.Adapters.TabAdapter;
-import com.agnellusx1.pharmacy.Tabs.FastTrackTab;
-import com.agnellusx1.pharmacy.Tabs.NormalTab;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public class Dashboard extends AppCompatActivity {
    String BillNo;

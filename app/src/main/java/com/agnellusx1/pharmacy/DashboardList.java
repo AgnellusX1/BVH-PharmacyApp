@@ -4,20 +4,18 @@ package com.agnellusx1.pharmacy;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.agnellusx1.pharmacy.Adapters.NormalAdapter;
 import com.agnellusx1.pharmacy.Adapters.OrderSample;
 import com.agnellusx1.pharmacy.Adapters.TabAdapter;
-import com.agnellusx1.pharmacy.Tabs.FastTrackTab;
-import com.agnellusx1.pharmacy.Tabs.NormalTab;
+import com.agnellusx1.pharmacy.Tabs.DeliveredTab;
+import com.agnellusx1.pharmacy.Tabs.WardTab;
+import com.agnellusx1.pharmacy.Tabs.PatientTab;
 import com.google.android.material.tabs.TabLayout;
 
 import java.sql.Connection;
@@ -73,7 +71,7 @@ public class DashboardList extends Fragment {
                                 );
 
                                 itemList.add(orderSample);
-//                                mNormalAdapter=new NormalAdapter(getContext(),itemList);
+//                                mNormalAdapter=new PatientAdapter(getContext(),itemList);
 //                                mRecyclerView.setAdapter(mNormalAdapter);
                             }catch(Exception ex){
                                 ex.printStackTrace();
@@ -112,8 +110,9 @@ public class DashboardList extends Fragment {
 
     public void setupViewPager(ViewPager viewPager){
         TabAdapter adapter= new TabAdapter(this.getChildFragmentManager());
-        adapter.AddTab(new FastTrackTab(),"Fast Track");
-        adapter.AddTab(new NormalTab(),"Normal");
+        adapter.AddTab(new WardTab(),"Ward");
+        adapter.AddTab(new PatientTab(),"Patient");
+        adapter.AddTab(new DeliveredTab(),"Delivered");
         viewPager.setAdapter(adapter);
 
     }
