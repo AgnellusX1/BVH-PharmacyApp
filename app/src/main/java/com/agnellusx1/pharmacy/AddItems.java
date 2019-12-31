@@ -28,8 +28,11 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
     private static final int REQUEST_CAMERA=1;
     private ZXingScannerView mScannerView;
+    public int trigger = 1;
+    String mode="";
 
-    public String theAns,two,three,four,five,six;
+
+    public String theAns;
     String BillNo;
 
     @Override
@@ -38,6 +41,11 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
         mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
+
+        Intent intentMode = getIntent();
+        mode = intentMode.getStringExtra(Dashboard.MSG);
+        Toast.makeText(AddItems.this, mode, Toast.LENGTH_SHORT).show();
+
 
         int currentApiVersion = Build.VERSION.SDK_INT;
 
@@ -132,36 +140,39 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
     @Override
     public void handleResult(final Result rawResult) {
-        final String scanResult=rawResult.getText();
-
-
-
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("Add Order to Deliver");
-
-
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 BillNo = rawResult.getText();
-                CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
-                checkDB.execute("");
 
+                if ( mode.equals("verify")){
+//
+                    CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
+                    checkDB.execute("");
+                    mScannerView.resumeCameraPreview(AddItems.this);
 
-
-                Intent intent = new Intent(AddItems.this, Dashboard.class);
-                //intent.putExtra(MSG,theAns);
-                startActivity(intent);
-                finish();
+                }
+                else{
+                    CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
+                    checkDB.execute("");
+                    //intent.putExtra(MSG,theAns);
+                    Intent intent = new Intent(AddItems.this, Dashboard.class);
+                    startActivity(intent);
+                    finish();
+                }
 
             }
         });
-//        builder.setNeutralButton("YES", new DialogInterface.OnClickListener() {
+
+//
+//        builder.setNeutralButton("Done Verifying ", new DialogInterface.OnClickListener() {
 //            @Override
 //            public void onClick(DialogInterface dialogInterface, int i) {
-//                //Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(scanResult));    agggus view
-//                //startActivity(intent);
+//                Intent intent = new Intent(AddItems.this, Dashboard.class);
+//                startActivity(intent);
 //                finish();
 //            }
 //        });
@@ -216,7 +227,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                 {
                     z = "Check Your Internet Access!";
                 }
-                else
+                else if (mode.equals("delivery"))//Flagg
                 {
                     String query = "SELECT top 1 * from Vw_PharmacyDeliveries where PatientCode ='"+BillNo+"'";
                     Statement stmt = con.createStatement();
@@ -225,13 +236,27 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                     {
                         z = "Login successful";
                         isSuccess=true;
-//                        theAns = rs.getString("PatientName");
-//                        two = rs.getString("MatlIndentNumber");
-//                        three = rs.getString("PatientCode");
                         DB.insTable(rs.getString("MatlIssueNumber"),
                                 rs.getString("PatientCode"),
                                 rs.getString("PatientName"),
                                 rs.getString("WardName"));
+                    }
+
+                    else
+                    {
+                        z = "Invalid Credentials!";
+                        isSuccess = false;
+                    }
+                }
+                else if (mode.equals("verify")){
+                    String query = "SELECT top 1 * from Vw_PharmacyDeliveries where PatientCode ='"+BillNo+"'";
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery(query);
+                    if(rs.next())
+                    {
+                        z = "Login successful";
+                        isSuccess=true;
+                        DB.delvrySuccess(BillNo);
                     }
 
                     else

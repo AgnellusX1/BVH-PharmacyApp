@@ -72,4 +72,29 @@ public class DBconnect {
         return true;
     }
 
+    public boolean delvrySuccess(String MIN1){
+        try {
+            Connection conn = connectionclass();
+            String query="";
+            Statement stmt;
+            // int flag =1;
+            stmt = conn.createStatement();
+            // if(DietRqstNumber!=null) {
+            query = "UPDATE Order_List SET Status = '0' WHERE PatientCode ='"+MIN1+"'";
+            int success;
+            success = stmt.executeUpdate(query);
+            if(success > 0)
+                return true;
+            else
+                return false;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }catch (NullPointerException e){
+            Log.e("error",e.toString());
+        }
+        return true;
+    }
+
+
 }

@@ -97,40 +97,9 @@ public class PatientTab extends Fragment {
             }
         }
 
-//        mRefreshLayout=view.findViewById(R.id.swipeRefresh);
-//        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                Intent intent=new Intent(getContext(), Dashboard.class);
-//                startActivity(intent);
-////                mPatientAdapter=new PatientAdapter(getContext(),itemList);
-////                mRecyclerView.setAdapter(mPatientAdapter);
-//                mRefreshLayout.setRefreshing(false);
-//            }
-//        });
-
-//        mPatientAdapter=new PatientAdapter(getContext(),itemList);
-//        mRecyclerView.setAdapter(mPatientAdapter);
         return view;
 
     }
-
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        // Refresh tab data:
-//        if (getFragmentManager() != null) {
-//
-//            getFragmentManager()
-//                    .beginTransaction()
-//                    .detach(this)
-//                    .attach(this)
-//                    .commit();
-//        }
-//    }
-
-
-
  }
 
 
