@@ -23,7 +23,8 @@ public class DBconnect {
         try
         {
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            ConnectionURL = "jdbc:jtds:sqlserver://sql5050.site4now.net;database=DB_A511EF_TestApp;user=DB_A511EF_TestApp_admin;password=MyPassword123";
+            ConnectionURL = "jdbc:jtds:sqlserver://192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
+//            jdbc:jtds:sqlserver://sql5050.site4now.net;database=DB_A511EF_TestApp;user=DB_A511EF_TestApp_admin;password=MyPassword123
                     //192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
 //            ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
 
@@ -45,7 +46,7 @@ public class DBconnect {
         return connection;
     }
 
-    public boolean insTable (String MIN1,String PC,String PN,String loc )  {
+    public boolean insTable (String MIN1,String PC,String PN,String loc,String MatIndentNo)  {
 
 
         try {
@@ -55,7 +56,8 @@ public class DBconnect {
             // int flag =1;
             stmt = conn.createStatement();
             // if(DietRqstNumber!=null) {
-            query = "INSERT INTO Order_List (MIN,scanDate,PatientCode,PatientName,Status,Location) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"')";
+            query = "INSERT INTO Pharmacy_status (MatlIssueNumber,scanDate,PatientCode,PatientName,Status,WardName,MatlIndentNumber) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"','"+MatIndentNo+"')";
+//            INSERT INTO Order_List (MIN,scanDate,PatientCode,PatientName,Status,Location) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"')
             int success;
             success = stmt.executeUpdate(query);
             if(success > 0)
@@ -80,7 +82,7 @@ public class DBconnect {
             // int flag =1;
             stmt = conn.createStatement();
             // if(DietRqstNumber!=null) {
-            query = "UPDATE Order_List SET Status = '0' WHERE PatientCode ='"+MIN1+"'";
+            query = "UPDATE Pharmacy_status SET Status = '0' WHERE MatlIssueNumber ='"+MIN1+"'";
             int success;
             success = stmt.executeUpdate(query);
             if(success > 0)

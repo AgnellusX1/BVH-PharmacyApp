@@ -196,7 +196,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
         @Override
         protected void onPreExecute()
         {
-
         }
 
         @Override
@@ -205,20 +204,15 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
             Toast.makeText(AddItems.this, r, Toast.LENGTH_SHORT).show();
             if(isSuccess)
             {
-
                 Toast.makeText(AddItems.this ,"data retrieved" , Toast.LENGTH_LONG).show();
                 Log.d("tag1", String.valueOf(theAns));
-
-
             }
         }
-
         private  DBconnect DB;
 
         @Override
         protected String doInBackground(String... params)
         {
-
             try
             {
                 DB = new DBconnect();
@@ -229,7 +223,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                 }
                 else if (mode.equals("delivery"))//Flagg
                 {
-                    String query = "SELECT top 1 * from Vw_PharmacyDeliveries where PatientCode ='"+BillNo+"'";
+                    String query = "SELECT top 1 * from Vw_PharmacyDeliveries where MatlIssueNumber ='"+BillNo+"'";
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     if(rs.next())
@@ -239,7 +233,9 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                         DB.insTable(rs.getString("MatlIssueNumber"),
                                 rs.getString("PatientCode"),
                                 rs.getString("PatientName"),
-                                rs.getString("WardName"));
+                                rs.getString("WardName"),
+                                rs.getString("MatlIndentNumber")
+                                );
                     }
 
                     else
@@ -249,7 +245,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                     }
                 }
                 else if (mode.equals("verify")){
-                    String query = "SELECT top 1 * from Vw_PharmacyDeliveries where PatientCode ='"+BillNo+"'";
+                    String query = "SELECT top 1 * from Pharmacy_status where MatlIssueNumber ='"+BillNo+"' and Status ='1'";
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     if(rs.next())
@@ -274,13 +270,10 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
             return z;
         }
     }
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(AddItems.this,Dashboard.class);
         startActivity(intent);
     }
-
 }

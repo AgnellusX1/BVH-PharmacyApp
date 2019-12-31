@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity
 
         //now to get values of SharedPreferences
         SharedPreferences getShared = getSharedPreferences("memory",MODE_PRIVATE);
-        String saved1 = getShared.getString("uname","BH14011150");
-        String saved2 = getShared.getString("pass","Mr. Joseph Dcruz");
+        String saved1 = getShared.getString("uname","itdept");
+        String saved2 = getShared.getString("pass","ITDEPT");
 
         username.setText(saved1);
         password.setText(saved2);
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity
                     }
                     else
                     {
-                        String query = "select * from Vw_PharmacyDeliveries where PatientCode = '" + usernam.toString() + "' and PatientName = '"+ passwordd.toString() +"' ";
+                        String query = "select * from LoginTable where UserCode = '" + usernam+ "' and Passwrd = '"+ passwordd +"' ";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
                         if(rs.next())

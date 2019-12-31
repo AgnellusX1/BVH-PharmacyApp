@@ -31,7 +31,6 @@ public class PatientTab extends Fragment {
     ArrayList<OrderSample>itemList;
     private RecyclerView mRecyclerView;
     PatientAdapter mPatientAdapter;
-    SwipeRefreshLayout mRefreshLayout;
 
 
     public PatientTab() {
@@ -64,7 +63,7 @@ public class PatientTab extends Fragment {
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }
         else {
-            String query="Select PatientCode,Status,PatientName FROM Order_List where Status = '1'";
+            String query="Select * FROM Pharmacy_status where Status = '1'";
             try {
                 Statement stmt=connection.createStatement();
                 ResultSet resultSet=stmt.executeQuery(query);
@@ -73,9 +72,9 @@ public class PatientTab extends Fragment {
                         {
                             try{
                                 OrderSample orderSample=new OrderSample(
-                                        resultSet.getString("PatientCode"),
-                                        resultSet.getString("Status"),
-                                        resultSet.getString("PatientName")
+                                        resultSet.getString("WardName"),
+                                        resultSet.getString("PatientName"),
+                                        resultSet.getString("MatlIssueNumber")
                                 );
 
                                 itemList.add(orderSample);
@@ -96,10 +95,6 @@ public class PatientTab extends Fragment {
                 e.printStackTrace();
             }
         }
-
         return view;
-
     }
  }
-
-

@@ -6,7 +6,7 @@
     tools:context=".Tabs.WardTab">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fastlist"
+        android:id="@+id/wardlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.opengl.ETC1;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +33,12 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.NormalVi
     DialogInterface.OnClickListener listener;
     List<OrderSample> Samples;
     private Context Context;
-    private String nurse_pass,nurse_id;
+    private String nurse_pass, nurse_id;
 
-    public PatientAdapter(Context mContext, ArrayList<OrderSample>mSamples) {
+    public PatientAdapter(Context mContext, ArrayList<OrderSample> mSamples) {
         Samples = mSamples;
         Context = mContext;
     }
-
 
 
     @NonNull
@@ -45,7 +46,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.NormalVi
     public PatientAdapter.NormalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //LayoutInflater inflater=LayoutInflater.from(parent.getContext());
         //View v = inflater.inflate(R.layout.patient_card,parent,false);
-        return new NormalViewHolder(LayoutInflater.from(Context).inflate(R.layout.patient_card,parent,false)) ;
+        return new NormalViewHolder(LayoutInflater.from(Context).inflate(R.layout.patient_card, parent, false));
         //ViewHolder(v);
     }
 
@@ -64,12 +65,12 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.NormalVi
     }
 
     public class NormalViewHolder extends RecyclerView.ViewHolder/* implements View.OnClickListener */{
-        TextView Location,Name,BillNumber;
+        TextView Location, Name, BillNumber;
         Context mContext;
         View layout;
+
         public NormalViewHolder(@NonNull View itemView) {
             super(itemView);
-            //itemView.setOnClickListener(this);
 
             layout=itemView;
             Location=itemView.findViewById(R.id.location);

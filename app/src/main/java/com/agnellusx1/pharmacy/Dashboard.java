@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -74,7 +75,7 @@ public class Dashboard extends AppCompatActivity {
                                     try{
                                         DB = new DBconnect();
                                         Connection con = DB.connectionclass();
-                                        String query = "select * from Nurse_Auth where pass = '" + nurse_pass + "'and userName='"+ nurse_id +"' ";
+                                        String query = "select * from LoginTable where passwrd = '" + nurse_pass + "'and UserCode='"+ nurse_id +"' ";
                                         Statement stmt = con.createStatement();
                                         ResultSet rs = stmt.executeQuery(query);
                                         if(rs.next()){
@@ -107,13 +108,13 @@ public class Dashboard extends AppCompatActivity {
                 if(connection==null){
                     Toast.makeText(Dashboard.this, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }else{
-                    String query="Select * from Vw_PharmacyDeliveries where PatientCode='"+value+"'";
+                    String query="Select * from Vw_PharmacyDeliveries where MatlIssueNumber='"+value+"'";
                     try {
                         Statement stmt = connection.createStatement();
                         ResultSet resultSet=stmt.executeQuery(query);
                         if(resultSet.next()){
                             Toast.makeText(Dashboard.this, "The !st query is good", Toast.LENGTH_SHORT).show();
-                            String query2 = "INSERT INTO Order_List (MIN,scanDate,PatientCode,PatientName,Status,Location)values('"+value+"',getDate(),'"+resultSet.getString("PatientCode")+"','"+resultSet.getString("PatientName")+"',1,'aggubaggu')";
+                            String query2 = "INSERT INTO Pharmacy_status (MatlIssueNumber,scanDate,PatientCode,PatientName,Status,Location)values('"+value+"',getDate(),'"+resultSet.getString("PatientCode")+"','"+resultSet.getString("PatientName")+"',1,'"+resultSet.getString("WardName")+"')";
                             Statement stmt2=connection.createStatement();
                             int z;
                             z = stmt2.executeUpdate(query2);
