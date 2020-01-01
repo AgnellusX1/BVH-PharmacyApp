@@ -48,7 +48,6 @@ public class DBconnect {
 
     public boolean insTable (String MIN1,String PC,String PN,String loc,String MatIndentNo)  {
 
-
         try {
             Connection conn = connectionclass();
             String query="";
@@ -56,7 +55,7 @@ public class DBconnect {
             // int flag =1;
             stmt = conn.createStatement();
             // if(DietRqstNumber!=null) {
-            query = "INSERT INTO Pharmacy_status (MatlIssueNumber,scanDate,PatientCode,PatientName,Status,WardName,MatlIndentNumber) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"','"+MatIndentNo+"')";
+            query = "INSERT INTO Pharmacy_status (MatlIssueNumber,scanDate,PatientCode,PatientName,Status,WardName,MatlIndentNumber,scanUser) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"','"+MatIndentNo+"','"+MainActivity.scanUserName+"')";
 //            INSERT INTO Order_List (MIN,scanDate,PatientCode,PatientName,Status,Location) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"')
             int success;
             success = stmt.executeUpdate(query);

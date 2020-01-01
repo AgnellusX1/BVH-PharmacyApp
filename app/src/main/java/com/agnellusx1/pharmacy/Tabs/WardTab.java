@@ -17,6 +17,7 @@ import com.agnellusx1.pharmacy.Adapters.OrderSample;
 import com.agnellusx1.pharmacy.Adapters.PatientAdapter;
 import com.agnellusx1.pharmacy.Adapters.WardAdapter;
 import com.agnellusx1.pharmacy.DBconnect;
+import com.agnellusx1.pharmacy.MainActivity;
 import com.agnellusx1.pharmacy.R;
 
 import java.sql.Connection;
@@ -60,7 +61,7 @@ public class WardTab extends Fragment {
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }
         else {
-            String query="Select * FROM Pharmacy_status where Status = '1' and  PatientName='NULL'";
+            String query="Select * FROM Pharmacy_status where Status = '1',PatientName='NULL' and scanUser = '"+ MainActivity.scanUserName +"'";
             try {
                 Statement stmt=connection.createStatement();
                 ResultSet resultSet=stmt.executeQuery(query);

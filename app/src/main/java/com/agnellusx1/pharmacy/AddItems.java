@@ -44,7 +44,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
         Intent intentMode = getIntent();
         mode = intentMode.getStringExtra(Dashboard.MSG);
-        Toast.makeText(AddItems.this, mode, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(AddItems.this, mode, Toast.LENGTH_SHORT).show();
 
 
         int currentApiVersion = Build.VERSION.SDK_INT;

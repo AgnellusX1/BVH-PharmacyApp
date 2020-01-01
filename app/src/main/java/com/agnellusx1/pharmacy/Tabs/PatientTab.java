@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.agnellusx1.pharmacy.Adapters.PatientAdapter;
 import com.agnellusx1.pharmacy.Adapters.OrderSample;
 import com.agnellusx1.pharmacy.DBconnect;
+import com.agnellusx1.pharmacy.MainActivity;
 import com.agnellusx1.pharmacy.R;
 
 import java.sql.Connection;
@@ -63,7 +64,7 @@ public class PatientTab extends Fragment {
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }
         else {
-            String query="Select * FROM Pharmacy_status where Status = '1'";
+            String query="Select * FROM Pharmacy_status where Status = '1' and scanUser = '"+ MainActivity.scanUserName +"'";
             try {
                 Statement stmt=connection.createStatement();
                 ResultSet resultSet=stmt.executeQuery(query);

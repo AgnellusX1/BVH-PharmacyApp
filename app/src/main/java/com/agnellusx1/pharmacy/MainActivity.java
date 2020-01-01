@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
@@ -26,7 +27,9 @@ import net.sourceforge.jtds.jdbc.*;
 
 public class MainActivity extends AppCompatActivity
 {
+    public static String scanUserName;
     // Declaring layout button, edit texts
+    //public String scanUserName;
     Button login;
     EditText username,password;
     ProgressBar progressBar;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity
                 CheckLogin checkLogin = new CheckLogin();// this is the Asynctask, which is used to process in background to reduce load on app process
                 checkLogin.execute("");
 
+                scanUserName = usernam;
                 SharedPreferences Cache = getSharedPreferences("memory",MODE_PRIVATE);
                 SharedPreferences.Editor editor = Cache.edit();
 
