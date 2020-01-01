@@ -25,10 +25,10 @@
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:text="Location"
             android:textAllCaps="true"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/pName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,15 +60,17 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="10dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:maxHeight="80dp"
             android:maxWidth="80dp"
-            app:layout_constraintEnd_toStartOf="@id/location"
+            android:maxHeight="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/patientv24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.019"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/patientv24" />
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
