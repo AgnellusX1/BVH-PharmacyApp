@@ -1,13 +1,10 @@
 package com.agnellusx1.pharmacy;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.os.Bundle;
-import android.util.Log;
 
 import android.view.View;
 import android.widget.Button;
@@ -15,15 +12,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.solver.Cache;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import net.sourceforge.jtds.jdbc.*;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -33,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     Button login;
     EditText username,password;
     ProgressBar progressBar;
+    String flag = "";
     // End Declaring layout button, edit texts
 
     // Declaring connection variables
@@ -49,11 +44,21 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (Dashboard.cacheCheck.equals("C")){
+
+            Dashboard.cacheCheck = "DD";
+            SharedPreferences Cache = getSharedPreferences("memory",MODE_PRIVATE);
+            SharedPreferences.Editor editor = Cache.edit();
+            editor.putString("uname","");
+            editor.putString("pass","");
+            editor.apply();
+        }
+
         // Getting values from button, texts and progress bar
-        login = (Button) findViewById(R.id.dLogin);
-        username = (EditText) findViewById(R.id.userid);
-        password = (EditText) findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        login = findViewById(R.id.dLogin);
+        username =findViewById(R.id.userid);
+        password =  findViewById(R.id.password);
+        progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         // End Getting values from button, texts and progress bar
 
@@ -77,18 +82,22 @@ public class MainActivity extends AppCompatActivity
                 checkLogin.execute("");
 
                 scanUserName = usernam;
+
                 SharedPreferences Cache = getSharedPreferences("memory",MODE_PRIVATE);
                 SharedPreferences.Editor editor = Cache.edit();
 
-                editor.putString("uname",usernam);
-                editor.putString("pass",passwordd);
-                editor.apply();
+                if (Dashboard.cacheCheck.equals("DD")){
+                    editor.putString("uname",usernam);
+                    editor.putString("pass",passwordd);
+                    editor.apply();
+                }
             }
         });
         //End Setting up the function when button login is clicked
 
 
         //now to get values of SharedPreferences
+
         SharedPreferences getShared = getSharedPreferences("memory",MODE_PRIVATE);
         String saved1 = getShared.getString("uname","itdept");
         String saved2 = getShared.getString("pass","ITDEPT");
@@ -168,5 +177,4 @@ public class MainActivity extends AppCompatActivity
             return z;
         }
     }
-
 }

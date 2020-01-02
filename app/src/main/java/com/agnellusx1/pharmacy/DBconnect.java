@@ -48,6 +48,7 @@ public class DBconnect {
 
     public boolean insTable (String MIN1,String PC,String PN,String loc,String MatIndentNo)  {
 
+
         try {
             Connection conn = connectionclass();
             String query="";

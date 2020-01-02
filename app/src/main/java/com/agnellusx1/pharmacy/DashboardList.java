@@ -46,10 +46,7 @@ public class DashboardList extends Fragment {
         DBconnect dBconnect=new DBconnect();
         Connection connection=dBconnect.connectionclass();
 
-//        mRecyclerView=view.findViewById(R.id.normalList);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         ArrayList<OrderSample> itemList = new ArrayList<OrderSample>();
-//        itemList.clear();
         Toast.makeText(getContext(), "Checking fo Orders", Toast.LENGTH_SHORT).show();
         if(connection==null){
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();

@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Dashboard">
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Search Here"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@id/fragment"
-        app:layout_constraintEnd_toStartOf="@id/searchButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <fragment
         android:id="@+id/fragment"
         android:name="com.agnellusx1.pharmacy.DashboardList"
@@ -26,9 +14,14 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search" />
+        app:layout_constraintTop_toBottomOf="@id/actionbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        layout="@layout/action_bar"
+        android:id="@+id/actionbar">
+
+    </include>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddBtn"
@@ -42,18 +35,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         app:srcCompat="@android:drawable/ic_input_add" />
-
-    <ImageButton
-        android:id="@+id/searchButton"
-        android:layout_width="34dp"
-        android:layout_height="38dp"
-        android:background="@android:drawable/ic_search_category_default"
-        android:maxWidth="10dp"
-        android:maxHeight="10dp"
-        android:src="@drawable/searchicon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/search"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/VfyBtn"
