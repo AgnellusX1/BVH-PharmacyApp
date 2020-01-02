@@ -61,7 +61,7 @@ public class WardTab extends Fragment {
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }
         else {
-            String query="Select * FROM Pharmacy_status where Status = '1',PatientName='NULL' and scanUser = '"+ MainActivity.scanUserName +"'";
+            String query="Select * FROM Pharmacy_status where Status = '1' and PatientName='NULL' and scanUser = '"+ MainActivity.scanUserName +"'";
             try {
                 Statement stmt=connection.createStatement();
                 ResultSet resultSet=stmt.executeQuery(query);

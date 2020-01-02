@@ -178,7 +178,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mScannerView.resumeCameraPreview(AddItems.this);
-                finish();
+
             }
         });
         builder.setMessage(rawResult.getText());
@@ -238,7 +238,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
                     else
                     {
-                        z = "Invalid Credentials!";
+                        z = "No Entry Found";
                         isSuccess = false;
                     }
                 }
@@ -255,7 +255,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
                     else
                     {
-                        z = "Invalid Credentials!";
+                        z = "Verify toast";
                         isSuccess = false;
                     }
                 }
@@ -273,5 +273,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
         super.onBackPressed();
         Intent intent = new Intent(AddItems.this,Dashboard.class);
         startActivity(intent);
+        finish();
     }
 }

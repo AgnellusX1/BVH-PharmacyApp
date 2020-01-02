@@ -3,6 +3,7 @@ package com.agnellusx1.pharmacy;
 import android.annotation.SuppressLint;
 import android.os.StrictMode;
 import android.util.Log;
+import java.util.Calendar;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -56,7 +57,7 @@ public class DBconnect {
             // int flag =1;
             stmt = conn.createStatement();
             // if(DietRqstNumber!=null) {
-            query = "INSERT INTO Pharmacy_status (MatlIssueNumber,scanDate,PatientCode,PatientName,Status,WardName,MatlIndentNumber,scanUser) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"','"+MatIndentNo+"','"+MainActivity.scanUserName+"')";
+            query = "INSERT INTO Pharmacy_status (MatlIssueNumber,scanDate,PatientCode,PatientName,Status,WardName,MatlIndentNumber,scanUser) values('"+MIN1+"',GETDATE(),'"+PC+"','"+PN+"',1,'"+loc+"','"+MatIndentNo+"','"+MainActivity.scanUserName+"')";
 //            INSERT INTO Order_List (MIN,scanDate,PatientCode,PatientName,Status,Location) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"')
             int success;
             success = stmt.executeUpdate(query);
@@ -77,16 +78,26 @@ public class DBconnect {
     public boolean delvrySuccess(String MIN1){
         try {
             Connection conn = connectionclass();
-            String query="";
+            String query,TATquery,TATentryQ,startTime,endTime="";
             Statement stmt;
             // int flag =1;
             stmt = conn.createStatement();
             // if(DietRqstNumber!=null) {
-            query = "UPDATE Pharmacy_status SET Status = '0' WHERE MatlIssueNumber ='"+MIN1+"'";
+            query = "UPDATE Pharmacy_status SET DeliveryEnd = GETDATE() WHERE MatlIssueNumber ='"+MIN1+"'";
+            TATquery="SELECT * from Pharmacy_status where MatlIssueNumber = '"+MIN1+"'";
             int success;
             success = stmt.executeUpdate(query);
-            if(success > 0)
+            if(success > 0){
+                ResultSet rs = stmt.executeQuery(TATquery);
+                if (rs.next()){
+                    startTime = rs.getString("scanDate");
+                    endTime = rs.getString("DeliveryEnd");
+                    TATentryQ = "UPDATE Pharmacy_status SET Status = '0', RecievedUser = DATEDIFF(mi, '"+startTime+"', '"+endTime+"') WHERE MatlIssueNumber ='"+MIN1+"'";
+                    int successTAT = stmt.executeUpdate(TATentryQ);
+                }
                 return true;
+            }
+
             else
                 return false;
 
