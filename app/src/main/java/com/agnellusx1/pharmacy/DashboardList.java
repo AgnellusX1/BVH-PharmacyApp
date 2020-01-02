@@ -47,9 +47,9 @@ public class DashboardList extends Fragment {
         Connection connection=dBconnect.connectionclass();
 
         ArrayList<OrderSample> itemList = new ArrayList<OrderSample>();
-        Toast.makeText(getContext(), "Checking fo Orders", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "Checking fo Orders", Toast.LENGTH_SHORT).show();
         if(connection==null){
-            Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Check WiFi Access", Toast.LENGTH_SHORT).show();
         }
         else {
             String query="Select PatientCode,Status,PatientName FROM Order_List where Status = '1'";

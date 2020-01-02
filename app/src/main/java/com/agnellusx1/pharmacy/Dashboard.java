@@ -107,6 +107,9 @@ public class Dashboard extends AppCompatActivity {
                                             startActivity(addItems);
                                             finish();
                                         }
+                                        else{
+                                            Toast.makeText(Dashboard.this, "Invalid Credentials", Toast.LENGTH_LONG).show();
+                                        }
 
                                     }catch(Exception ex){
                                         Toast.makeText(Dashboard.this,ex.getMessage(), Toast.LENGTH_LONG).show();

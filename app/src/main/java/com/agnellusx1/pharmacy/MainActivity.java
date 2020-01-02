@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity
                     Connection con = DB.connectionclass();        // Connect to database
                     if (con == null)
                     {
-                        z = "Check Your Internet Access!";
+                        z = "Check Your WiFi Access!";
                     }
                     else
                     {

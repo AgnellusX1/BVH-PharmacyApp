@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +44,7 @@ public class PatientTab extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_normal_tab, container, false);
+        View view=inflater.inflate(R.layout.fragment_patient_tab, container, false);
 
         DBconnect dBconnect=new DBconnect();
         Connection connection=dBconnect.connectionclass();
@@ -59,7 +58,7 @@ public class PatientTab extends Fragment {
 
 
 
-        Toast.makeText(getContext(), "Checking for Orders", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "Checking for Orders", Toast.LENGTH_SHORT).show();
         if(connection==null){
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }

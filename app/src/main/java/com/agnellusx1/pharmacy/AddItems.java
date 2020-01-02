@@ -50,7 +50,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
         if ( currentApiVersion >= Build.VERSION_CODES.M)
         {
             if (checkPermission()) {
-                Toast.makeText(AddItems.this, "Permission is Granted", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddItems.this, "Permission is Granted", Toast.LENGTH_SHORT).show();
             }
             else {
                 requestPermission();
@@ -202,7 +202,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
             Toast.makeText(AddItems.this, r, Toast.LENGTH_SHORT).show();
             if(isSuccess)
             {
-                Toast.makeText(AddItems.this ,"data retrieved" , Toast.LENGTH_LONG).show();
+                //Toast.makeText(AddItems.this ,"data retrieved" , Toast.LENGTH_LONG).show();
                 Log.d("tag1", String.valueOf(theAns));
             }
         }
@@ -217,7 +217,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                 Connection con = DB.connectionclass();        // Connect to database
                 if (con == null)
                 {
-                    z = "Check Your Internet Access!";
+                    z = "Check Your WiFi Access!";
                 }
                 else if (mode.equals("delivery"))//Flagg
                 {
@@ -226,7 +226,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                     ResultSet rs = stmt.executeQuery(query);
                     if(rs.next())
                     {
-                        z = "Login successful";
+                        z ="Done";
                         isSuccess=true;
                         DB.insTable(rs.getString("MatlIssueNumber"),
                                 rs.getString("PatientCode"),
@@ -248,7 +248,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                     ResultSet rs = stmt.executeQuery(query);
                     if(rs.next())
                     {
-                        z = "Login successful";
+                        z = "Done";
                         isSuccess=true;
                         DB.delvrySuccess(BillNo);
                     }

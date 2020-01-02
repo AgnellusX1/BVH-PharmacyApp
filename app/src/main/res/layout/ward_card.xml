@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="Location"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/pName"
             app:layout_constraintEnd_toEndOf="parent"
