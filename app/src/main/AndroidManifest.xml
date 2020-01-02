@@ -24,7 +24,9 @@
         </activity>
         <activity android:name=".AddItems">
         </activity>
-        <activity android:name=".Dashboard" />
+        <activity android:name=".Dashboard"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
