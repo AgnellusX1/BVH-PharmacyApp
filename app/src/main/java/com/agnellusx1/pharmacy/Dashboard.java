@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
@@ -55,11 +56,13 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        TextView AgentName=findViewById(R.id.AgentId);
         FloatingActionButton AddBtn = findViewById(R.id.AddBtn);
         FloatingActionButton VfyBtn = findViewById(R.id.VfyBtn);
         Toolbar toolbar=findViewById(R.id.actionbar);
         setSupportActionBar(toolbar);
 
+        AgentName.setText(MainActivity.scanUserName);
 
 // delivery button
         AddBtn.setOnClickListener(new View.OnClickListener() {

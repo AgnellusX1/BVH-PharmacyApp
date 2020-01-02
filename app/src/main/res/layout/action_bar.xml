@@ -15,11 +15,11 @@
             android:layout_height="wrap_content"
             android:text="Agent name"
             android:textColor="#FFFFFF"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
         </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.appcompat.widget.Toolbar>
