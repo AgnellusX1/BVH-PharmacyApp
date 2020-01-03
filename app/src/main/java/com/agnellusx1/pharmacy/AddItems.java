@@ -150,44 +150,40 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 //
                     CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
                     checkDB.execute("");
-//                    if (isWrong = true){
-//                        final AlertDialog.Builder ErrorBuilder=new AlertDialog.Builder(AddItems.this);
-//                        ErrorBuilder.setTitle("WARNING: Scan Again ");
-//                        ErrorBuilder.setNeutralButton("Scan Item", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                mScannerView.resumeCameraPreview(AddItems.this);
-//                            }
-//
-//                        });
-//                        ErrorBuilder.setIcon(R.drawable.warning);
-//                        AlertDialog alertDialog=ErrorBuilder.create();
-//                        alertDialog.show();
-//                        isWrong = false;
-//                    }
-                    mScannerView.resumeCameraPreview(AddItems.this);
+                    if (isWrong = true){
+                        final AlertDialog.Builder ErrorBuilder=new AlertDialog.Builder(AddItems.this);
+                        ErrorBuilder.setTitle("WARNING: Scan Again ");
+                        ErrorBuilder.setNeutralButton("Scan Item", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                mScannerView.resumeCameraPreview(AddItems.this);
+                            }
 
-
+                        });
+                        ErrorBuilder.setIcon(R.drawable.warning);
+                        AlertDialog alertDialog=ErrorBuilder.create();
+                        alertDialog.show();
+                        isWrong = false;
+                    }
                 }
                 else{
                     CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
                     checkDB.execute("");
-//                    if (isWrong = true){
-//                        final AlertDialog.Builder ErrorBuilder=new AlertDialog.Builder(AddItems.this);
-//                        ErrorBuilder.setTitle("WARNING: Scan Again ");
-//                        ErrorBuilder.setNeutralButton("Scan Item", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                mScannerView.resumeCameraPreview(AddItems.this);
-//                            }
-//
-//                        });
-//                        ErrorBuilder.setIcon(R.drawable.warning);
-//                        AlertDialog alertDialog=ErrorBuilder.create();
-//                        alertDialog.show();
-//                        isWrong = false;
-//                    }
-                    mScannerView.resumeCameraPreview(AddItems.this);
+                    if (isWrong = true){
+                        final AlertDialog.Builder ErrorBuilder=new AlertDialog.Builder(AddItems.this);
+                        ErrorBuilder.setTitle("WARNING: Scan Again ");
+                        ErrorBuilder.setNeutralButton("Scan Item", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                mScannerView.resumeCameraPreview(AddItems.this);
+                            }
+
+                        });
+                        ErrorBuilder.setIcon(R.drawable.warning);
+                        AlertDialog alertDialog=ErrorBuilder.create();
+                        alertDialog.show();
+                        isWrong = false;
+                    }
 
                     // TODO use this if barcode needs to swap Activity from AddItems to Dashboard
 //                    Intent intent = new Intent(AddItems.this, Dashboard.class);
@@ -238,22 +234,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                 //Toast.makeText(AddItems.this ,"data retrieved" , Toast.LENGTH_LONG).show();
                 Log.d("tag1", String.valueOf(theAns));
             }
-//            else{
-//                //TODO put in result handler
-//
-//                final AlertDialog.Builder ErrorBuilder=new AlertDialog.Builder(AddItems.this);
-//                ErrorBuilder.setTitle("WARNING: Scan Again ");
-//                ErrorBuilder.setNeutralButton("Scan Item", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        mScannerView.resumeCameraPreview(AddItems.this);
-//                    }
-//
-//                });
-//                ErrorBuilder.setIcon(R.drawable.warning);
-//                AlertDialog alertDialog=ErrorBuilder.create();
-//                alertDialog.show();
-//            }
         }
         private  DBconnect DB;
 
