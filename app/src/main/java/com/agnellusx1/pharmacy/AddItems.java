@@ -108,10 +108,8 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                                     new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                     requestPermissions(new String[]{CAMERA},
                                             REQUEST_CAMERA);
-                                }
                                 }
                             });
                             return;
@@ -176,7 +174,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 //                finish();
 //            }
 //        });
-        builder.setNegativeButton("NO",new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("NO",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mScannerView.resumeCameraPreview(AddItems.this);

@@ -69,7 +69,7 @@ public class DeliveredTab extends Fragment {
                         {
                             try{
                                 OrderSample orderSample=new OrderSample(
-                                        resultSet.getString("PatientName"),
+                                        resultSet.getString("DeliveryEnd"),
                                         resultSet.getString("WardName"),
                                         resultSet.getString("MatlIssueNumber")
                                 );
