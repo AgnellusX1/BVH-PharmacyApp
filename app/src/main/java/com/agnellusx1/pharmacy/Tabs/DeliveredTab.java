@@ -59,7 +59,8 @@ public class DeliveredTab extends Fragment {
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }
         else {
-            String query="Select * FROM Pharmacy_status where Status = '0' and scanUser = '"+ MainActivity.scanUserName+"'";
+            // TODO Verify If Date Query works Properly
+            String query="Select * FROM Pharmacy_status where Status = '0' and scanUser = '"+ MainActivity.scanUserName+"' and Convert(varchar(10),MatlIssueDate,120) >= Convert(varchar(10),getdate()-1,120)";
             try {
                 Statement stmt=connection.createStatement();
                 ResultSet resultSet=stmt.executeQuery(query);

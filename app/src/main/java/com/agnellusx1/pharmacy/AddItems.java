@@ -156,10 +156,12 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                 else{
                     CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
                     checkDB.execute("");
-                    //intent.putExtra(MSG,theAns);
-                    Intent intent = new Intent(AddItems.this, Dashboard.class);
-                    startActivity(intent);
-                    finish();
+                    mScannerView.resumeCameraPreview(AddItems.this);
+
+                    // TODO use this if barcode needs to swap Activity from AddItems to Dashboard
+//                    Intent intent = new Intent(AddItems.this, Dashboard.class);
+//                    startActivity(intent);
+//                    finish();
                 }
 
             }
@@ -232,7 +234,8 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                                 rs.getString("PatientCode"),
                                 rs.getString("PatientName"),
                                 rs.getString("WardName"),
-                                rs.getString("MatlIndentNumber")
+                                rs.getString("MatlIndentNumber"),
+                                rs.getString("MatlIssueDate")
                                 );
                     }
 

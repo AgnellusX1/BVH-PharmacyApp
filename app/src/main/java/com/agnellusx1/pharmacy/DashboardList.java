@@ -42,50 +42,6 @@ public class DashboardList extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-
-        DBconnect dBconnect=new DBconnect();
-        Connection connection=dBconnect.connectionclass();
-
-        ArrayList<OrderSample> itemList = new ArrayList<OrderSample>();
-        //Toast.makeText(getContext(), "Checking fo Orders", Toast.LENGTH_SHORT).show();
-        if(connection==null){
-            Toast.makeText(getContext(),"Check WiFi Access", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            String query="Select PatientCode,Status,PatientName FROM Order_List where Status = '1'";
-
-            try {
-                Statement stmt=connection.createStatement();
-                ResultSet resultSet=stmt.executeQuery(query);
-                if(resultSet!=null){
-                    while(resultSet.next()){
-                        {
-                            try{
-                                OrderSample orderSample=new OrderSample(
-                                        resultSet.getString("PatientCode"),
-                                        resultSet.getString("Status"),
-                                        resultSet.getString("PatientName")
-                                );
-
-                                itemList.add(orderSample);
-//                                mNormalAdapter=new PatientAdapter(getContext(),itemList);
-//                                mRecyclerView.setAdapter(mNormalAdapter);
-                            }catch(Exception ex){
-                                ex.printStackTrace();
-                            }
-                        }
-                    }
-
-                }
-                else{
-                    Toast.makeText(getContext(), "Value is Null", Toast.LENGTH_SHORT).show();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-
     }
 
 

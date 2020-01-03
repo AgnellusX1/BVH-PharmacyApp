@@ -29,6 +29,7 @@ public class Dashboard extends AppCompatActivity {
    private String nurse_id,nurse_pass;
    public static final String ClrData = "Data clear info";
    public static String cacheCheck = "DD";
+   public static String NurseEntry = "";
 
 
     @Override
@@ -98,10 +99,11 @@ public class Dashboard extends AppCompatActivity {
                                     try{
                                         DB = new DBconnect();
                                         Connection con = DB.connectionclass();
-                                        String query = "select * from LoginTable where passwrd = '" + nurse_pass + "'and UserCode='"+ nurse_id +"' ";
+                                        String query = "select * from LoginTable where passwrd = '" + nurse_pass + "' and UserCode='"+ nurse_id +"' and isDietician ='R' ";
                                         Statement stmt = con.createStatement();
                                         ResultSet rs = stmt.executeQuery(query);
                                         if(rs.next()){
+                                            NurseEntry = nurse_id;
                                             Intent addItems=new Intent(Dashboard.this,AddItems.class);
                                             addItems.putExtra(MSG,value);
                                             startActivity(addItems);
