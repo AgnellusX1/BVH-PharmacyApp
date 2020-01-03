@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AddItems">
+        <activity android:name=".AddItems"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".Dashboard"
             android:screenOrientation="portrait">
