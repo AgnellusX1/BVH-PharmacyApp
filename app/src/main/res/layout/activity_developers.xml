@@ -1,36 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingRight="20dp"
-    android:paddingLeft="20dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="10dp">
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="716dp"
-        android:background="@color/colorAccent"
-        android:backgroundTint="@color/colorCard"
-        tools:context=".Developers">
-
+        android:layout_height="match_parent"
+        android:background="#E9101F30">
 
         <TextView
             android:id="@+id/AboutApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:gravity=""
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/AboutApp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/AboutDev"
+            android:textColor="#8DFFFFFF"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@id/AboutDev"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,16 +30,29 @@
             android:id="@+id/AboutDev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:gravity="center"
             android:text="@string/AboutDev"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            android:textColor="#8DFFFFFF"
+            android:textSize="24dp"
             app:layout_constraintBottom_toTopOf="@id/Dev1"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/AboutApp" />
+
+        <TextView
+            android:id="@+id/Dev2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="Amrut Savadatti"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Dev1" />
 
         <TextView
             android:id="@+id/Dev1"
@@ -56,27 +60,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Agnellus Fernandes"
-            android:textSize="30dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/Dev2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AboutDev" />
-
-        <TextView
-            android:id="@+id/Dev2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:text="Amrut Savadatti"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Dev1" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>
