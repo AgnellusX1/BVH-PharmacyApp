@@ -3,4 +3,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="AboutApp">
+        This Application was developed for the BhaktiVedanta Hospital and Research Center, Mira Road Mumbai, Maharashtra, India.
+        The Main objective of this application was to help the Delivery Boys of the hospital with the task of keeping track of the deliveries that they would perform.
+        The App is designed in a way to ease the manual work of the employees, at the same tme keeping Security and Integrity as a prime concerns.
+    </string>
+
+    <string name="AboutDev">
+        Developed by the Students of St. Francis Institute of Technology:
+    </string>
 </resources>

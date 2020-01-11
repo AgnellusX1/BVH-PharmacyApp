@@ -3,32 +3,37 @@
     package="com.agnellusx1.pharmacy">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:label="Pharmacy"
         android:allowBackup="true"
         android:icon="@drawable/app"
+        android:label="Pharmacy"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".Developers"></activity>
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddItems"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Dashboard"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".AddItems"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Dashboard"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
