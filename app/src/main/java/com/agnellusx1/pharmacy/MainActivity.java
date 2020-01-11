@@ -27,11 +27,9 @@ public class MainActivity extends AppCompatActivity
     Button login;
     EditText username,password;
     ProgressBar progressBar;
-    String flag = "";
     // End Declaring layout button, edit texts
 
     // Declaring connection variables
-    Connection con;
     String un,pass,db,ip;
     String usernam,passwordd;
     //End Declaring connection variables
@@ -130,8 +128,6 @@ public class MainActivity extends AppCompatActivity
                 Intent intent = new Intent(MainActivity.this,Dashboard.class);
                 startActivity(intent);
                 finish();
-                //Toast.makeText(MainActivity.this , "Login Successfull" , Toast.LENGTH_LONG).show();
-                //finish();
             }
         }
         @Override
@@ -152,7 +148,7 @@ public class MainActivity extends AppCompatActivity
                     }
                     else
                     {
-                        String query = "select * from LoginTable where UserCode = '" + usernam+ "' and Passwrd = '"+ passwordd +"' ";
+                        String query = "select * from vw_LoginTable where UserCode = '" + usernam+ "' and Passwrd = '"+ passwordd +"' and isDietician = 'P'";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
                         if(rs.next())

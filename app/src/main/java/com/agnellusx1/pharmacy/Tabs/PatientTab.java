@@ -56,9 +56,6 @@ public class PatientTab extends Fragment {
         itemList=new ArrayList<OrderSample>();
         itemList.clear();
 
-
-
-        //Toast.makeText(getContext(), "Checking for Orders", Toast.LENGTH_SHORT).show();
         if(connection==null){
             Toast.makeText(getContext(),"Check Internet", Toast.LENGTH_SHORT).show();
         }

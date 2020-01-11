@@ -30,7 +30,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
     private static final int REQUEST_CAMERA=1;
     private ZXingScannerView mScannerView;
     String mode="";
-    Boolean isWrong;
 
 
     public String theAns;
@@ -51,10 +50,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
         if ( currentApiVersion >= Build.VERSION_CODES.M)
         {
-            if (checkPermission()) {
-                //Toast.makeText(AddItems.this, "Permission is Granted", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            if (!checkPermission()) {
                 requestPermission();
             }
         }
@@ -94,32 +90,28 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
     }
 
     public void onRequestPermissionsResult(final int requestCode, String[] permission, int [] grantResults){
-        switch (requestCode){
-            case REQUEST_CAMERA:
-            if (grantResults.length>0){
+        if (requestCode == REQUEST_CAMERA) {
+            if (grantResults.length > 0) {
 
-                boolean cameraAccepted = grantResults[0]==PackageManager.PERMISSION_GRANTED;
-                if(cameraAccepted){
+                boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                if (cameraAccepted) {
                     Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
-                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M)
-                    {
-                        if(shouldShowRequestPermissionRationale(CAMERA)){
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (shouldShowRequestPermissionRationale(CAMERA)) {
                             displayAlertMessage("You need to allow access for both permissions",
                                     new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    requestPermissions(new String[]{CAMERA},
-                                            REQUEST_CAMERA);
-                                }
-                            });
-                            return;
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            requestPermissions(new String[]{CAMERA},
+                                                    REQUEST_CAMERA);
+                                        }
+                                    });
                         }
                     }
                 }
             }
-            break;
         }
     }
 
@@ -150,46 +142,25 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 //
                     CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
                     checkDB.execute("");
-                    if (isWrong = true){
-                        final AlertDialog.Builder ErrorBuilder=new AlertDialog.Builder(AddItems.this);
-                        ErrorBuilder.setTitle("WARNING: Scan Again ");
-                        ErrorBuilder.setNeutralButton("Scan Item", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                mScannerView.resumeCameraPreview(AddItems.this);
-                            }
-
-                        });
-                        ErrorBuilder.setIcon(R.drawable.warning);
-                        AlertDialog alertDialog=ErrorBuilder.create();
-                        alertDialog.show();
-                        isWrong = false;
-                    }
-                }
-                else{
+                    mScannerView.resumeCameraPreview(AddItems.this);
+                } else {
                     CheckDB checkDB = new CheckDB();// this is the Asynctask, which is used to process in background to reduce load on app process
                     checkDB.execute("");
-                    if (isWrong = true){
-                        final AlertDialog.Builder ErrorBuilder=new AlertDialog.Builder(AddItems.this);
-                        ErrorBuilder.setTitle("WARNING: Scan Again ");
-                        ErrorBuilder.setNeutralButton("Scan Item", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                mScannerView.resumeCameraPreview(AddItems.this);
-                            }
+                    mScannerView.resumeCameraPreview(AddItems.this);
 
-                        });
-                        ErrorBuilder.setIcon(R.drawable.warning);
-                        AlertDialog alertDialog=ErrorBuilder.create();
-                        alertDialog.show();
-                        isWrong = false;
-                    }
 
                     // TODO use this if barcode needs to swap Activity from AddItems to Dashboard
 //                    Intent intent = new Intent(AddItems.this, Dashboard.class);
 //                    startActivity(intent);
 //                    finish();
                 }
+
+            }
+        });
+        builder.setNeutralButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mScannerView.resumeCameraPreview(AddItems.this);
 
             }
         });
@@ -203,13 +174,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 //                finish();
 //            }
 //        });
-        builder.setNeutralButton("NO",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                mScannerView.resumeCameraPreview(AddItems.this);
-
-            }
-        });
         builder.setMessage(rawResult.getText());
         AlertDialog alertDialog=builder.create();
         alertDialog.show();
@@ -231,7 +195,6 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
             Toast.makeText(AddItems.this, r, Toast.LENGTH_SHORT).show();
             if(isSuccess)
             {
-                //Toast.makeText(AddItems.this ,"data retrieved" , Toast.LENGTH_LONG).show();
                 Log.d("tag1", String.valueOf(theAns));
             }
         }
@@ -278,6 +241,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
                     ResultSet rs = stmt.executeQuery(query);
                     if(rs.next())
                     {
+                        Log.e("inVerify Code","rs.next() has value");
                         z = "Done";
                         isSuccess=true;
                         DB.delvrySuccess(BillNo);
@@ -285,9 +249,9 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
 
                     else
                     {
-                        z = "Verify toast";
+                        Log.e("inVerify Code","rs.next() has no value");
+                        z = "!!!!!!SCAN AGAIN!!!!!!";
                         isSuccess = false;
-                        isWrong = true;
                     }
                 }
             }
@@ -298,6 +262,7 @@ public class AddItems extends AppCompatActivity implements ZXingScannerView.Resu
             }
             return z;
         }
+
     }
     @Override
     public void onBackPressed() {

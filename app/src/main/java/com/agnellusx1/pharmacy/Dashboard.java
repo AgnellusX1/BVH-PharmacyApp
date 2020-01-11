@@ -99,7 +99,7 @@ public class Dashboard extends AppCompatActivity {
                                     try{
                                         DB = new DBconnect();
                                         Connection con = DB.connectionclass();
-                                        String query = "select * from LoginTable where passwrd = '" + nurse_pass + "' and UserCode='"+ nurse_id +"' and isDietician ='R' ";
+                                        String query = "select * from vw_LoginTable where passwrd = '" + nurse_pass + "' and UserCode='"+ nurse_id +"' and isDietician != 'P' ";
                                         Statement stmt = con.createStatement();
                                         ResultSet rs = stmt.executeQuery(query);
                                         if(rs.next()){

@@ -3,7 +3,6 @@ package com.agnellusx1.pharmacy;
 import android.annotation.SuppressLint;
 import android.os.StrictMode;
 import android.util.Log;
-import java.util.Calendar;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,9 +24,6 @@ public class DBconnect {
         {
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
             ConnectionURL = "jdbc:jtds:sqlserver://192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
-//            jdbc:jtds:sqlserver://sql5050.site4now.net;database=DB_A511EF_TestApp;user=DB_A511EF_TestApp_admin;password=MyPassword123
-                    //192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
-//            ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
 
 
             connection = DriverManager.getConnection(ConnectionURL);
@@ -54,11 +50,8 @@ public class DBconnect {
             Connection conn = connectionclass();
             String query="";
             Statement stmt;
-            // int flag =1;
             stmt = conn.createStatement();
-            // if(DietRqstNumber!=null) {
             query = "INSERT INTO Pharmacy_status (MatlIssueNumber,scanDate,PatientCode,PatientName,Status,WardName,MatlIndentNumber,scanUser,MatlIssueDate) values('"+MIN1+"',GETDATE(),'"+PC+"','"+PN+"',1,'"+loc+"','"+MatIndentNo+"','"+MainActivity.scanUserName+"','"+Mdate+"')";
-//            INSERT INTO Order_List (MIN,scanDate,PatientCode,PatientName,Status,Location) values('"+MIN1+"',getDate(),'"+PC+"','"+PN+"',1,'"+loc+"')
             int success;
             success = stmt.executeUpdate(query);
             if(success > 0)
@@ -81,7 +74,7 @@ public class DBconnect {
             String query,TATquery,TATentryQ,startTime,endTime="";
             Statement stmt;
             stmt = conn.createStatement();
-//            TODO put nurse enty in query
+
             query = "UPDATE Pharmacy_status SET DeliveryEnd = GETDATE(),RecievedUser = '"+Dashboard.NurseEntry+"' WHERE MatlIssueNumber ='"+MIN1+"'";
             TATquery="SELECT * from Pharmacy_status where MatlIssueNumber = '"+MIN1+"'";
             int success;

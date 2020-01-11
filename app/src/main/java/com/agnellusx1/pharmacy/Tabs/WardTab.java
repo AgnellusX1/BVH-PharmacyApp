@@ -2,19 +2,16 @@ package com.agnellusx1.pharmacy.Tabs;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.agnellusx1.pharmacy.Adapters.OrderSample;
-import com.agnellusx1.pharmacy.Adapters.PatientAdapter;
 import com.agnellusx1.pharmacy.Adapters.WardAdapter;
 import com.agnellusx1.pharmacy.DBconnect;
 import com.agnellusx1.pharmacy.MainActivity;
