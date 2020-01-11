@@ -14,12 +14,14 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/actionbar"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <include
-        layout="@layout/action_bar"
-        android:id="@+id/actionbar">
+        android:id="@+id/actionbar"
+        layout="@layout/action_bar">
 
     </include>
 
@@ -48,6 +50,20 @@
         app:layout_constraintTop_toTopOf="@+id/fragment"
         app:layout_constraintVertical_bias="0.987"
         app:srcCompat="@android:drawable/ic_menu_send" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/AbtUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AddBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragment"
+        app:layout_constraintVertical_bias="0.974"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

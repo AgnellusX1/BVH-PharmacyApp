@@ -60,10 +60,22 @@ public class Dashboard extends AppCompatActivity {
         TextView AgentName=findViewById(R.id.AgentId);
         FloatingActionButton AddBtn = findViewById(R.id.AddBtn);
         FloatingActionButton VfyBtn = findViewById(R.id.VfyBtn);
+        FloatingActionButton AbtUs = findViewById(R.id.AbtUs);
         Toolbar toolbar=findViewById(R.id.actionbar);
         setSupportActionBar(toolbar);
 
         AgentName.setText(MainActivity.scanUserName);
+
+
+        //About Us Method
+        AbtUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent aboutUs =new Intent(Dashboard.this,Developers.class);
+                startActivity(aboutUs);
+                finish();
+            }
+        });
 
 // delivery button
         AddBtn.setOnClickListener(new View.OnClickListener() {
