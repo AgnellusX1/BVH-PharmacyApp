@@ -58,3 +58,9 @@ An insight to the map the efficiency of the Delivery Boys
  - Android Studio (Obviously)
  - Adobe Illustrator (Logo and UI Components)
  - Zxing Bar-code Scanner Library
+
+**Developers**
+
+[Agnellus Fernandes ](https://www.linkedin.com/in/agnellus-fernandes-81232b192)
+
+[Amrut Savadatti](https://www.linkedin.com/in/amrut-savadatti-277069183)
