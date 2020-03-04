@@ -23,8 +23,8 @@ public class DBconnect {
         try
         {
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            ConnectionURL = "jdbc:jtds:sqlserver://192.168.5.19:49429;database=DietApp;user=DietApp;password=BvhApp@123";
-
+            ConnectionURL = "jdbc:jtds:sqlserver://ServerAddress:Port;database=Database Name;user=User Name;password=Password";
+//            Hidden for Security Reasons
 
             connection = DriverManager.getConnection(ConnectionURL);
         }
