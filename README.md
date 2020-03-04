@@ -14,6 +14,11 @@ An insight to the map the efficiency of the Delivery Boys
  - QR Scanner (Works for both Bar Code and QR Code)
  - 24x7 Connectivity to In-House Hosted Server (MS SQL)
 
+**Developers**
+
+ - [Agnellus Fernandes ](https://www.linkedin.com/in/agnellus-fernandes-81232b192)
+
+ - [Amrut Savadatti](https://www.linkedin.com/in/amrut-savadatti-277069183)
 ## Screenshots
 
 
