@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:layout_marginTop="30dp"
             android:text="@string/AboutApp"
             android:textColor="#8DFFFFFF"
             android:textSize="18dp"
@@ -30,6 +31,7 @@
             android:id="@+id/AboutDev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="@string/AboutDev"
             android:textColor="#8DFFFFFF"
@@ -44,7 +46,6 @@
             android:id="@+id/Dev2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
             android:text="Amrut Savadatti"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
@@ -58,14 +59,37 @@
             android:id="@+id/Dev1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:text="Agnellus Fernandes"
             android:textColor="#FFFFFF"
             android:textSize="24dp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/Dev2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AboutDev" />
+
+        <TextView
+            android:id="@+id/link1no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9004830350"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@id/Dev2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/AboutDev" />
+            app:layout_constraintTop_toBottomOf="@id/Dev1"
+            app:layout_constraintVertical_bias="0.419" />
+
+        <TextView
+            android:id="@+id/link2no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9869580141"
+            android:textColor="#FCFCFC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Dev2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
