@@ -1,6 +1,6 @@
 <a href="url"><img src="app/src/main/res/drawable/app.png" align="left" height="48" width="48" ></a>
 # Pharmacy Delivery App
-## Pharmacy (In-Housse) Delivery App (Android) for *BhaktiVedanta Hospital and Research Institute*
+## Pharmacy (In-House) Delivery App (Android) for *BhaktiVedanta Hospital and Research Institute*
 ### About the Project
 A Delivery App for the Delivery Boys at BhaktiVedanta Hospital, helping them in keeping track of the various deliveries that are to be made to the different wards and patients admitted at the hospital
 Helping to keep track of the time between the Pick-up and Drop-off
@@ -13,7 +13,7 @@ An insight to the map the efficiency of the Delivery Boys
  - Lightweight
  - Beautiful and Interactive UI
  - QR Scanner (Works for both Bar Code and QR Code)
- - 24x7 Connectivity to In-House Hosted Server (MS SQL)
+ - 24x7 Connectivity to locally Hosted Server (MS SQL)
 
 **Developers**
 
